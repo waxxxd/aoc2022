@@ -9,6 +9,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -27,5 +28,11 @@ public class FileDataReader {
         return Arrays.stream(inputData.split(BLANKLINE)).
                 map(i -> Arrays.stream(i.split(NEWLINE)).
                         mapToInt(Integer::parseInt));
+    }
+
+    public static Stream<List<String>> splitIntoPairs(String inputData) {
+        return Arrays
+                .stream(inputData.split(NEWLINE))
+                .map(i -> Arrays.stream(i.split(" ")).toList());
     }
 }
